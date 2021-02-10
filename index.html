@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <form class="header__input">
+          <div class="inputes">
+            <input
+              type="date"
+              class="input-date"
+              id="startDate"
+              placeholder="Start Date"
+            />
+            <input
+              type="date"
+              class="input-date"
+              id="endDate"
+              placeholder="End Date"
+            />
+          </div>
+          <div class="buttons">
+            <input
+              type="button"
+              class="button button-red"
+              id="resetDate"
+              value="Reset"
+            />
+            <input
+              type="button"
+              class="button button-yellow"
+              id="searchDate"
+              value="Search"
+            />
+          </div>
+        </form>
+        <div class="header__line"></div>
+        <div class="header__info">
+          <button class="button button-yellow">Today</button>
+          <div class="buttons">
+            <button class="button button-gray">Month</button>
+            <button class="button button-blue">List View</button>
+          </div>
+        </div>
+      </div>
+      <div class="main">
+        <div class="main__arrows">
+          <div class="arrow arrow-rotate"></div>
+          <div class="main__title" id="titleMounth">January</div>
+          <div class="arrow"></div>
+        </div>
+        <div class="table">
+          <div class="main__table_thead">
+            <div class="main__table_td"></div>
+            <div class="main__table_td"></div>
+            <div class="main__table_td"></div>
+            <div class="main__table_td"></div>
+            <div class="main__table_td"></div>
+            <div class="main__table_td"></div>
+            <div class="main__table_td"></div>
+          </div>
+          <div class="main__table_tbody"></div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
