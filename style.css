@@ -20,6 +20,7 @@
   border: 1px solid rgb(34, 73, 105);
   border-radius: 2px;
   outline: none;
+  cursor: pointer;
 } /* для input */
 
 .button {
@@ -27,20 +28,41 @@
   border: 0;
   border-radius: 2px;
   outline: none;
+  cursor: pointer;
 } /* для всех button*/
 
 .button-red {
   background-color: rgb(255, 97, 86);
 } /* для button red */
+.button-red:hover {
+  border: 2px solid rgb(255, 97, 86);
+  background-color: rgb(220, 237, 255);
+  padding: 8px 20px;
+} /* при наведении на кнопку */
 .button-yellow {
   background-color: rgb(255, 196, 35);
 } /* для button yellow */
+.button-yellow:hover {
+  border: 2px solid rgb(255, 196, 35);
+  background-color: rgb(220, 237, 255);
+  padding: 8px 20px;
+} /* при наведении на кнопку */
 .button-gray {
   background-color: rgb(158, 158, 158);
 } /* для button gray */
+.button-gray:hover {
+  border: 2px solid rgb(158, 158, 158);
+  background-color: rgb(220, 237, 255);
+  padding: 8px 20px;
+} /* при наведении на кнопку */
 .button-blue {
   background-color: rgb(49, 96, 134);
 } /* для button gray */
+.button-blue:hover {
+  border: 2px solid rgb(49, 96, 134);
+  background-color: rgb(220, 237, 255);
+  padding: 8px 20px;
+} /* при наведении на кнопку */
 
 .header__line {
   width: 100%;
@@ -56,6 +78,12 @@
   padding: 0 10px 15px;
 } /* для блока в header под линией */
 
+.main__title {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: rgb(37, 81, 117);
+} /* название месяца */
+
 .main__arrows {
   display: flex;
   justify-content: space-between;
@@ -66,23 +94,60 @@
   background-image: url(images/icons8-arrow-100.png);
   background-size: cover;
   padding: 20px;
+  cursor: pointer;
 } /* добавить картинку */
-
+.arrow:hover {
+  background-image: url(images/icons8-arrow-1002.png);
+  background-size: cover;
+  padding: 20px;
+  cursor: pointer;
+} /* добавить картинку при наведении*/
 .arrow-rotate {
   transform: scale(-1, 1);
 } /* отразить по горизонтали картинку */
 
-.table {
-}
-
 .main__table_thead {
   background-color: rgb(158, 158, 158);
   display: flex;
-}
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+} /* заголовок календаря с днями*/
+
+.main__table_tbody {
+  background-color: rgb(238, 238, 238);
+  display: flex;
+  flex-wrap: wrap;
+  text-align: right;
+  font-size: 1rem;
+} /* тело календаря*/
 
 .main__table_td {
   padding: 2px;
   border: 1px solid rgb(73, 73, 73);
-  flex-grow: 1;
-  flex-shrink: 2;
+  width: calc(100% / 7);
+} /* для ячеек таблицы */
+
+.main__table_td div {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 100%;
+  padding: 5px 5px 15vh 0;
+  cursor: pointer;
+} /* для чисел */
+
+.main__table_td div:hover:not(.today) {
+  background-color: rgb(158, 158, 158);
+} /* при наведении вне сегодня */
+
+.today {
+  background-color: rgb(255, 196, 35);
+} /* стиль для сегодня */
+.today:hover {
+  background-color: rgb(248, 201, 73);
+}
+
+.prev-date,
+.next-date {
+  opacity: 0.5;
 }

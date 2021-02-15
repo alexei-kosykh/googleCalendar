@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Calendar</title>
   </head>
   <body>
     <div class="wrapper">
@@ -42,32 +42,16 @@
         </form>
         <div class="header__line"></div>
         <div class="header__info">
-          <button class="button button-yellow">Today</button>
+          <button class="button button-yellow" id="btnToday">Today</button>
           <div class="buttons">
-            <button class="button button-gray">Month</button>
-            <button class="button button-blue">List View</button>
+            <button class="button button-gray" id="btnmonth">Month</button>
+            <button class="button button-blue" id="btnListView">
+              List View
+            </button>
           </div>
         </div>
       </div>
-      <div class="main">
-        <div class="main__arrows">
-          <div class="arrow arrow-rotate"></div>
-          <div class="main__title" id="titleMounth">January</div>
-          <div class="arrow"></div>
-        </div>
-        <div class="table">
-          <div class="main__table_thead">
-            <div class="main__table_td"></div>
-            <div class="main__table_td"></div>
-            <div class="main__table_td"></div>
-            <div class="main__table_td"></div>
-            <div class="main__table_td"></div>
-            <div class="main__table_td"></div>
-            <div class="main__table_td"></div>
-          </div>
-          <div class="main__table_tbody"></div>
-        </div>
-      </div>
+      <div class="main"></div>
     </div>
     <script src="app.js"></script>
   </body>
