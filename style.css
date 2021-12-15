@@ -37,7 +37,7 @@
 .button-red:hover {
   border: 2px solid rgb(255, 97, 86);
   background-color: rgb(220, 237, 255);
-  padding: 8px 20px;
+  padding: 7px 18px;
 } /* при наведении на кнопку */
 .button-yellow {
   background-color: rgb(255, 196, 35);
@@ -45,7 +45,7 @@
 .button-yellow:hover {
   border: 2px solid rgb(255, 196, 35);
   background-color: rgb(220, 237, 255);
-  padding: 8px 20px;
+  padding: 7px 18px;
 } /* при наведении на кнопку */
 .button-gray {
   background-color: rgb(158, 158, 158);
@@ -53,7 +53,7 @@
 .button-gray:hover {
   border: 2px solid rgb(158, 158, 158);
   background-color: rgb(220, 237, 255);
-  padding: 8px 20px;
+  padding: 7px 18px;
 } /* при наведении на кнопку */
 .button-blue {
   background-color: rgb(49, 96, 134);
@@ -61,7 +61,7 @@
 .button-blue:hover {
   border: 2px solid rgb(49, 96, 134);
   background-color: rgb(220, 237, 255);
-  padding: 8px 20px;
+  padding: 7px 18px;
 } /* при наведении на кнопку */
 
 .header__line {

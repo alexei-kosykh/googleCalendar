@@ -1,39 +1,37 @@
 const date = new Date();
 
-// All Buttons
+// All Buttons queries
 const resetDate = document.querySelector("#resetDate");
 const searchDate = document.querySelector("#searchDate");
 const btnToday = document.querySelector("#btnToday");
 const btnMonth = document.querySelector("#btnmonth");
 const btnListView = document.querySelector("#btnListView");
 
-redoCalendar = () => {
+// Main function
+const redoCalendar = () => {
   const main = document.querySelector(".main");
-  const lastDay = new Date(
-    date.getFullYear(),
-    date.getMonth() + 1,
-    0
-  ).getDate(); // последний день этого месяца
 
-  const firstDayIndex = new Date(
-    date.getFullYear(),
-    date.getMonth(),
-    1
-  ).getDate(); // первый день недели в этом месяце (число (пятница - 5))
+  // Initial constant of date
+  const currMonth = date.getMonth();
+  const currYear = date.getFullYear();
 
-  const prevLastDay = new Date(
-    date.getFullYear(),
-    date.getMonth(),
-    0
-  ).getDate(); // последний день предыдущего месяца
+  // The last day in this month
+  const lastDay = new Date(currYear, currMonth + 1, 0).getDate();
 
-  const lastDayIndex = new Date(
-    date.getFullYear(),
-    date.getMonth() + 1,
-    0
-  ).getDay(); // возвращаем индекс дня недели, на котором заканчивается текущий месяц
+  // The last day of previos month
+  const prevLastDay = new Date(currYear, currMonth, 0).getDate();
 
-  const nextDays = 7 - lastDayIndex - 1; // Определить сколько нужно отрисовать из следующего месяца (7 - дней недели, 1 - т.к. отсчет с 0)
+  // The first day of current month as a number of week's day
+  const firstDayIndex = new Date(currYear, currMonth, date.getDay()).getDate();
+
+  // The last day of current month as a number of week's day
+  const lastDayIndex = new Date(currYear, currMonth + 1, 0).getDay();
+
+  // Counted days from next month, that will use in the current month
+  const nextDays = 7 - lastDayIndex - 1;
+
+  // Total weeks in month
+  const totalWeeks = Math.ceil((lastDay + firstDayIndex) / 7);
 
   const daysArray = [
     "Sunday",
@@ -44,6 +42,7 @@ redoCalendar = () => {
     "Friday",
     "Saturday",
   ];
+  const shortDaysArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const monthArray = [
     "January",
     "February",
@@ -59,22 +58,23 @@ redoCalendar = () => {
     "December",
   ];
 
-  // Временное хранение
+  // Temporary storage
   let days = "";
 
-  moreArrays = {};
-  lineArrays = {
-    0: [],
-    1: [],
-    2: [],
-  };
+  // let events = [];
+  // moreArrays = [];
+  // lineArrays = [];
+
+  // const localEvents = () => {
+  //   localStorage.getItem("events")
+  //     ? ((events = JSON.parse(localStorage.getItem("events"))), drawEvents())
+  //     : (events = []);
+  // };
 
   const drawTitle = () => {
     main.innerHTML = `<div class="main__arrows">
   <div id="prev" class="arrow arrow-rotate"></div>
-  <div class="main__title" id="titlemonth">${
-    monthArray[date.getMonth()]
-  }, ${date.getFullYear()}</div>
+  <div class="main__title" id="titlemonth">${monthArray[currMonth]}, ${currYear}</div>
   <div id="next" class="arrow"></div>
   </div>`;
   };
@@ -100,8 +100,8 @@ redoCalendar = () => {
     for (let i = 1; i <= lastDay; i++) {
       if (
         i === new Date().getDate() &&
-        date.getMonth() === new Date().getMonth() &&
-        date.getFullYear() === new Date().getFullYear()
+        currMonth === new Date().getMonth() &&
+        currYear === new Date().getFullYear()
       ) {
         days += `<div class="main__table_td"><div class="today cell">${i}</div><div class="line line-arrow"></div></div>`;
       } else {
@@ -137,12 +137,12 @@ redoCalendar = () => {
   drawCalendar();
 
   document.querySelector("#prev").addEventListener("click", () => {
-    date.setMonth(date.getMonth() - 1);
+    date.setMonth(currMonth - 1);
     redoCalendar();
   });
 
   document.querySelector("#next").addEventListener("click", () => {
-    date.setMonth(date.getMonth() + 1);
+    date.setMonth(currMonth + 1);
     redoCalendar();
   });
 };
