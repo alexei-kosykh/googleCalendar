@@ -1,4 +1,5 @@
 const date = new Date();
+
 // All Buttons
 const resetDate = document.querySelector("#resetDate");
 const searchDate = document.querySelector("#searchDate");
@@ -14,7 +15,11 @@ redoCalendar = () => {
     0
   ).getDate(); // последний день этого месяца
 
-  const firstDayIndex = date.getDay(); // первый день недели в этом месяце (число (пятница - 5))
+  const firstDayIndex = new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    1
+  ).getDate(); // первый день недели в этом месяце (число (пятница - 5))
 
   const prevLastDay = new Date(
     date.getFullYear(),
@@ -57,6 +62,13 @@ redoCalendar = () => {
   // Временное хранение
   let days = "";
 
+  moreArrays = {};
+  lineArrays = {
+    0: [],
+    1: [],
+    2: [],
+  };
+
   const drawTitle = () => {
     main.innerHTML = `<div class="main__arrows">
   <div id="prev" class="arrow arrow-rotate"></div>
@@ -78,7 +90,7 @@ redoCalendar = () => {
 
   prevMonthDays = () => {
     for (let i = firstDayIndex; i > 0; i--) {
-      days += `<div class="main__table_td"><div class="prev-date">${
+      days += `<div class="main__table_td"><div class="prev-date cell">${
         prevLastDay - i + 1
       }</div></div>`;
     } // отрисовка дней из прошлого месяца
@@ -91,16 +103,16 @@ redoCalendar = () => {
         date.getMonth() === new Date().getMonth() &&
         date.getFullYear() === new Date().getFullYear()
       ) {
-        days += `<div class="main__table_td"><div class="today">${i}</div></div>`;
+        days += `<div class="main__table_td"><div class="today cell">${i}</div><div class="line line-arrow"></div></div>`;
       } else {
-        days += `<div class="main__table_td"><div>${i}</div></div>`;
+        days += `<div class="main__table_td"><div class="cell">${i}</div></div>`;
       }
     }
   };
 
   nextMonthDays = () => {
     for (let i = 1; i <= nextDays; i++) {
-      days += `<div class="main__table_td"><div class="next-date">${i}</div></div>`;
+      days += `<div class="main__table_td"><div class="next-date cell">${i}</div></div>`;
     }
   };
 
@@ -136,7 +148,6 @@ redoCalendar = () => {
 };
 
 btnToday.addEventListener("click", () => {
-  debugger;
   date.setMonth(new Date().getMonth());
   redoCalendar();
 });

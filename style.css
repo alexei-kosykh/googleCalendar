@@ -123,16 +123,17 @@
 } /* тело календаря*/
 
 .main__table_td {
+  position: relative;
   padding: 2px;
   border: 1px solid rgb(73, 73, 73);
   width: calc(100% / 7);
 } /* для ячеек таблицы */
 
-.main__table_td div {
+.main__table_td .cell {
   display: flex;
   justify-content: flex-end;
   font-size: 100%;
-  padding: 5px 5px 15vh 0;
+  padding: 3px 49% 15vh 0;
   cursor: pointer;
 } /* для чисел */
 
@@ -150,4 +151,40 @@
 .prev-date,
 .next-date {
   opacity: 0.5;
+} /* для даты прошлого и след. месяцев */
+
+/* .line {
+  position: absolute;
+  margin-bottom: 7px;
+  right: 1%;
+  left: 1%;
+  width: 98%;
+  height: 15px;
+  background-color: rgb(49, 96, 134);
+} 
+
+.line-0 {
+  top: 30%;
 }
+
+.line-arrow {
+  clip-path: polygon(
+    10% 100%,
+    100% 140px,
+    100% 0%,
+    10% 0%,
+    10% 0%,
+    2% 50%,
+    10% 100%
+  );
+  -webkit-clip-path: polygon(
+    10% 100%,
+    100% 140px,
+    100% 0%,
+    10% 0%,
+    10% 0%,
+    2% 50%,
+    10% 100%
+  );
+  transform: scale(-1, 1);
+} стиль для лини со стрелкой */
