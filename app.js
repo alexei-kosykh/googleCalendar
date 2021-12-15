@@ -71,6 +71,7 @@ const redoCalendar = () => {
   //     : (events = []);
   // };
 
+  // HEAD of the calendar
   const drawTitle = () => {
     main.innerHTML = `<div class="main__arrows">
   <div id="prev" class="arrow arrow-rotate"></div>
@@ -79,50 +80,62 @@ const redoCalendar = () => {
   </div>`;
   };
 
+  // Table of the calendar
   const drawHeader = (table) => {
     table.innerHTML = "";
     table.innerHTML += `<div class="main__table_thead"></div>`;
     const thead = document.querySelector(".main__table_thead");
-    for (let i = 0; i < daysArray.length; i++) {
-      thead.innerHTML += `<div class="main__table_td">${daysArray[i]}</div>`;
-    }
-  };
 
-  prevMonthDays = () => {
-    for (let i = firstDayIndex; i > 0; i--) {
-      days += `<div class="main__table_td"><div class="prev-date cell">${
-        prevLastDay - i + 1
-      }</div></div>`;
-    } // отрисовка дней из прошлого месяца
-  };
-
-  currentMonthDays = () => {
-    for (let i = 1; i <= lastDay; i++) {
-      if (
-        i === new Date().getDate() &&
-        currMonth === new Date().getMonth() &&
-        currYear === new Date().getFullYear()
-      ) {
-        days += `<div class="main__table_td"><div class="today cell">${i}</div><div class="line line-arrow"></div></div>`;
-      } else {
-        days += `<div class="main__table_td"><div class="cell">${i}</div></div>`;
+    const wideForm = (days) => {
+      for (let i = 0; i < days.length; i++) {
+        thead.innerHTML += `<div class="main__table_td">${days[i]}</div>`;
       }
-    }
+    };
+
+    const widthScreen = document.documentElement.clientWidth;
+    widthScreen < 700 ? wideForm(shortDaysArray) : wideForm(daysArray);
   };
 
-  nextMonthDays = () => {
-    for (let i = 1; i <= nextDays; i++) {
-      days += `<div class="main__table_td"><div class="next-date cell">${i}</div></div>`;
-    }
+  // Draw all days
+  const drawAllDays = () => {
+    // Draw days from previos month
+    const prevMonthDays = () => {
+      for (let i = firstDayIndex; i > 0; i--) {
+        days += `<div class="main__table_td"><div class="prev-date cell">${
+          prevLastDay - i + 1
+        }</div></div>`;
+      }
+    };
+
+    // Draw days from current month
+    const currentMonthDays = () => {
+      for (let i = 1; i <= lastDay; i++) {
+        if (
+          i === new Date().getDate() &&
+          currMonth === new Date().getMonth() &&
+          currYear === new Date().getFullYear()
+        ) {
+          days += `<div class="main__table_td"><div class="today cell">${i}</div><div class="line line-arrow"></div></div>`;
+        } else {
+          days += `<div class="main__table_td"><div class="cell">${i}</div></div>`;
+        }
+      }
+    };
+
+    // Draw days from next month
+    const nextMonthDays = () => {
+      for (let i = 1; i <= nextDays; i++) {
+        days += `<div class="main__table_td"><div class="next-date cell">${i}</div></div>`;
+      }
+    };
+    return prevMonthDays(), currentMonthDays(), nextMonthDays();
   };
 
   const drawMain = (table) => {
     table.innerHTML += `<div class="main__table_tbody"></div>`;
     const tbody = document.querySelector(".main__table_tbody");
-    prevMonthDays();
-    currentMonthDays();
-    nextMonthDays();
-    tbody.innerHTML += days; // даты теперь в html
+    drawAllDays();
+    tbody.innerHTML += days; // dates in html
   };
 
   const drawCalendar = () => {
@@ -148,7 +161,9 @@ const redoCalendar = () => {
 };
 
 btnToday.addEventListener("click", () => {
+  date.setYear(new Date().getFullYear());
   date.setMonth(new Date().getMonth());
+  date.setDate(new Date().getDate());
   redoCalendar();
 });
 
